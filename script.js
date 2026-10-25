@@ -157,7 +157,7 @@ const stories = [
     icon: "💌",
     genre: "রোমান্স",
     text: "বৃষ্টিভেজা শহরে একটি চিঠি বদলে দিল দুজন মানুষের জীবনের গল্প।",
-    youtubeUrl: ""
+    youtubeUrl: "",
   },
   {
     title: "হারানো চিঠি",
@@ -166,7 +166,7 @@ const stories = [
     icon: "🔎",
     genre: "রহস্য",
     text: "বহু বছর পর পাওয়া একটি চিঠির ভিতরে লুকিয়ে ছিল পরিবারের পুরোনো সত্য।",
-    youtubeUrl: ""
+    youtubeUrl: "",
   },
   {
     title: "রক্তের দাগ",
@@ -175,7 +175,7 @@ const stories = [
     icon: "🩸",
     genre: "ভৌতিক",
     text: "নির্জন বাড়িতে রাত বাড়ার সঙ্গে সঙ্গে অদ্ভুত শব্দ শোনা যেতে লাগল।",
-    youtubeUrl: ""
+    youtubeUrl: "",
   },
   {
     title: "নীল পাহাড়",
@@ -184,7 +184,7 @@ const stories = [
     icon: "🏔️",
     genre: "সাহিত্য",
     text: "পাহাড়ের পথে যাত্রা করতে গিয়ে সে নিজের জীবনের নতুন অর্থ খুঁজে পেল।",
-    youtubeUrl: ""
+    youtubeUrl: "",
   },
   {
     title: "ভাঙা তারা",
@@ -193,7 +193,7 @@ const stories = [
     icon: "⭐",
     genre: "সাহিত্য",
     text: "একটি অসমাপ্ত স্বপ্ন আর একটি ভাঙা তারার গল্প।",
-    youtubeUrl: ""
+    youtubeUrl: "",
   },
   {
     title: "পলাশীর যুদ্ধ",
@@ -202,7 +202,7 @@ const stories = [
     icon: "⚔️",
     genre: "সাহিত্য",
     text: "ইতিহাসের এক গুরুত্বপূর্ণ অধ্যায়কে গল্পের ভাষায় শোনানো হয়েছে।",
-    youtubeUrl: ""
+    youtubeUrl: "",
   },
   {
     title: "মধ্যরাতের সঙ্গীত",
@@ -211,7 +211,7 @@ const stories = [
     icon: "👻",
     genre: "ভৌতিক",
     text: "মধ্যরাতে শোনা সেই সুরের উৎস খুঁজতে গিয়ে রহস্য আরও গভীর হয়ে উঠল।",
-    youtubeUrl: ""
+    youtubeUrl: "",
   },
   {
     title: "প্রথম পাঠ",
@@ -220,7 +220,7 @@ const stories = [
     icon: "📖",
     genre: "সাহিত্য",
     text: "শৈশবের প্রথম বইটির স্মৃতি তাকে আবার ফিরিয়ে নিয়ে গেল পুরোনো দিনে।",
-    youtubeUrl: ""
+    youtubeUrl: "",
   },
   {
     title: "আলোর পথ",
@@ -229,7 +229,7 @@ const stories = [
     icon: "😊",
     genre: "রোমান্স",
     text: "কঠিন সময়ে দুজন মানুষ একে অপরের জীবনে আলো হয়ে উঠল।",
-    youtubeUrl: ""
+    youtubeUrl: "",
   },
   {
     title: "পুরোনো মন্দির",
@@ -238,7 +238,7 @@ const stories = [
     icon: "🏛️",
     genre: "রহস্য",
     text: "জঙ্গলের ভিতরের মন্দিরটি বহু বছর ধরে বন্ধ ছিল। কিন্তু এক রাতে তার দরজা খুলে গেল।",
-    youtubeUrl: ""
+    youtubeUrl: "",
   },
   {
     title: "বৃষ্টির দিনে",
@@ -247,7 +247,7 @@ const stories = [
     icon: "🌧️",
     genre: "অন্যান্য",
     text: "এক বৃষ্টির দিনে ঘটে যাওয়া ছোট্ট একটি ঘটনা সারাজীবনের স্মৃতি হয়ে রইল।",
-    youtubeUrl: ""
+    youtubeUrl: "",
   },
 ];
 
@@ -261,20 +261,137 @@ render("weeklyCards", stories.slice(0, 8));
 render("starterCards", stories.slice(8).concat(stories.slice(2, 4)));
 render("popularCards", stories.slice(4, 10));
 
+const creatorProfiles = {
+  authors: Object.values(
+    stories.reduce((profiles, story) => {
+      if (!profiles[story.author]) {
+        profiles[story.author] = {
+          id: story.author,
+          name: story.author,
+          role: "লেখক",
+          icon: "✍️",
+          bio: "",
+          works: [],
+        };
+      }
+
+      profiles[story.author].works.push({
+        title: story.title,
+        genre: story.genre,
+        description: story.text,
+      });
+
+      const genres = profiles[story.author].works.map((work) => work.genre);
+
+      profiles[story.author].bio =
+        `${[...new Set(genres)].join(" ও ")} বিভাগে গল্প লিখেছেন।`;
+
+      return profiles;
+    }, {}),
+  ),
+
+  // Demo profiles only. Replace with your real narrators and recordings.
+  narrators: [
+    {
+      id: "narrator-demo-1",
+      name: "কথক ১",
+      role: "কথক",
+      icon: "🎙️",
+      bio: "এখানে কথকের পরিচিতি যোগ করুন।",
+      works: [],
+    },
+    {
+      id: "narrator-demo-2",
+      name: "কথক ২",
+      role: "কথক",
+      icon: "🎧",
+      bio: "এখানে তাঁর কণ্ঠে পরিবেশিত গল্পের তথ্য যোগ করুন।",
+      works: [],
+    },
+    {
+      id: "narrator-demo-3",
+      name: "কথক ৩",
+      role: "কথক",
+      icon: "🎤",
+      bio: "এখানে কথকের পরিচিতি ও কাজ যোগ করুন।",
+      works: [],
+    },
+  ],
+};
+
+function renderCreatorCards(type = "featured") {
+  const container = document.getElementById("creatorCards");
+  if (!container) return;
+
+  let profiles;
+
+  if (type === "authors") {
+    profiles = creatorProfiles.authors;
+  } else if (type === "narrators") {
+    profiles = creatorProfiles.narrators;
+  } else {
+    profiles = [
+      ...creatorProfiles.authors.slice(0, 2),
+      ...creatorProfiles.narrators.slice(0, 2),
+    ];
+  }
+
+  container.innerHTML = profiles
+    .map((person) => {
+      const worksMarkup = person.works.length
+        ? person.works
+            .map(
+              (work) => `
+                <li>
+                  <strong>${work.title}</strong>
+                  <span class="creator-genre">${work.genre}</span>
+                  <p>${work.description}</p>
+                </li>
+              `,
+            )
+            .join("")
+        : "<li>কাজের তথ্য শীঘ্রই যোগ করা হবে।</li>";
+
+      return `
+        <article class="author-card ${person.role === "কথক" ? "green" : ""}">
+          <div class="author-art" aria-hidden="true">
+            ${person.icon}
+          </div>
+
+          <span class="creator-role">${person.role}</span>
+          <h3>${person.name}</h3>
+          <p class="creator-bio">${person.bio}</p>
+
+          <div class="creator-details">
+            <strong>কাজ ও অবদান</strong>
+            <ul>${worksMarkup}</ul>
+            <small>মোট কাজ: ${person.works.length}</small>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+// Show writer and narrator profiles on the initial page.
+renderCreatorCards();
+
+function showCreatorType(type) {
+  renderCreatorCards(type);
+
+  document.getElementById("authors")?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+}
 
 function bindCards() {
   document.querySelectorAll(".story-card").forEach((c) => {
     const openStoryVideo = () => {
-      const story = stories.find(
-        (s) => s.title === c.dataset.title
-      );
+      const story = stories.find((s) => s.title === c.dataset.title);
 
       if (story?.youtubeUrl) {
-        window.open(
-          story.youtubeUrl,
-          "_blank",
-          "noopener,noreferrer"
-        );
+        window.open(story.youtubeUrl, "_blank", "noopener,noreferrer");
       }
     };
 
@@ -289,24 +406,118 @@ function bindCards() {
   });
 }
 
-
 document.querySelectorAll(".chip").forEach((btn) =>
   btn.addEventListener("click", () => {
     document
       .querySelectorAll(".chip")
       .forEach((x) => x.classList.remove("active"));
     btn.classList.add("active");
-    applyFilters(btn.dataset.filter);
+    activeGenreFilter = btn.dataset.filter;
+    applySearchAndFilters();
   }),
 );
-function applyFilters(filter) {
-  document
-    .querySelectorAll(".story-card")
-    .forEach(
-      (c) =>
-        (c.style.display =
-          filter === "all" || c.dataset.genre === filter ? "" : "none"),
-    );
+
+let activeGenreFilter =
+  document.querySelector(".chip.active")?.dataset.filter || "all";
+
+function applySearchAndFilters() {
+  const input = document.getElementById("searchInput");
+  const resultsBox = document.getElementById("searchResults");
+
+  const query = input.value.trim().toLowerCase();
+
+  const matches = stories.filter((story) => {
+    const matchesGenre =
+      activeGenreFilter === "all" || story.genre === activeGenreFilter;
+
+    const searchableText = [story.title, story.author, story.genre, story.text]
+      .join(" ")
+      .toLowerCase();
+
+    return matchesGenre && searchableText.includes(query);
+  });
+
+  // Filter all existing story cards without rebuilding them.
+  document.querySelectorAll(".story-card").forEach((card) => {
+    const story = stories.find((item) => item.title === card.dataset.title);
+
+    const searchableText = story
+      ? [story.title, story.author, story.genre, story.text]
+          .join(" ")
+          .toLowerCase()
+      : "";
+
+    const matchesQuery = !query || searchableText.includes(query);
+
+    const matchesGenre =
+      story &&
+      (activeGenreFilter === "all" || story.genre === activeGenreFilter);
+
+    card.style.display = matchesQuery && matchesGenre ? "" : "none";
+  });
+
+  // Show a hint when the search is empty.
+  if (!query) {
+    resultsBox.innerHTML = `
+      <p class="search-hint">
+        গল্পের নাম, লেখক বা বিভাগ লিখে খুঁজুন।
+      </p>
+    `;
+    return;
+  }
+
+  // Show a helpful message when nothing matches.
+  if (matches.length === 0) {
+    resultsBox.innerHTML = `
+      <p class="search-empty">
+        এই নামে কোনো গল্প পাওয়া যায়নি।
+        <br />
+        অন্য নাম বা বিভাগ দিয়ে চেষ্টা করুন।
+      </p>
+    `;
+    return;
+  }
+
+  // Limit suggestions to keep the menu compact.
+  const suggestions = matches.slice(0, 6);
+
+  resultsBox.innerHTML = `
+    <p class="search-result-count">
+      ${matches.length}টি গল্প পাওয়া গেছে
+    </p>
+
+    ${suggestions
+      .map(
+        (story) => `
+          <button
+            type="button"
+            class="search-result-item"
+            data-search-title="${story.title}"
+          >
+            <span class="search-result-icon">
+              ${story.icon}
+            </span>
+
+            <span class="search-result-info">
+              <span class="search-result-title">
+                ${story.title}
+              </span>
+
+              <span class="search-result-meta">
+                ${story.author} · ${story.genre}
+              </span>
+            </span>
+          </button>
+        `,
+      )
+      .join("")}
+
+    ${
+      matches.length > 6
+        ? `<p class="search-hint">আরও ${matches.length - 6}টি ফলাফল আছে।</p>`
+        : ""
+    }
+  `;
 }
 
 const drawer = document.getElementById("drawer"),
@@ -324,14 +535,38 @@ document.getElementById("menuClose").onclick = closeMenu;
 overlay.onclick = closeMenu;
 document.querySelectorAll(".drawer a").forEach((a) => (a.onclick = closeMenu));
 
-document.getElementById("searchInput").addEventListener("input", (e) => {
-  const q = e.target.value.trim().toLowerCase();
-  document.querySelectorAll(".story-card").forEach((c) => {
-    const s = stories.find((x) => x.title === c.dataset.title);
-    c.style.display =
-      !q || `${s.title} ${s.author} ${s.genre}`.toLowerCase().includes(q)
-        ? ""
-        : "none";
+document
+  .getElementById("searchInput")
+  .addEventListener("input", applySearchAndFilters);
+
+document.getElementById("searchResults").addEventListener("click", (event) => {
+  const resultButton = event.target.closest(".search-result-item");
+
+  if (!resultButton) return;
+
+  const story = stories.find(
+    (item) => item.title === resultButton.dataset.searchTitle,
+  );
+
+  if (!story) return;
+
+  closeMenu();
+
+  // Play the linked recording when available.
+  if (story.youtubeUrl) {
+    window.open(story.youtubeUrl, "_blank", "noopener,noreferrer");
+    return;
+  }
+
+  // Otherwise, take the user to the matching story card.
+  const matchingCard = [...document.querySelectorAll(".story-card")].find(
+    (card) =>
+      card.dataset.title === story.title && card.style.display !== "none",
+  );
+
+  matchingCard?.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
   });
 });
 
@@ -349,21 +584,25 @@ document.querySelectorAll(".show-all").forEach(
         .scrollIntoView({ behavior: "smooth", block: "center" });
     }),
 );
-document.querySelector(".show-authors").onclick = (e) => {
+
+document.querySelector(".show-authors")?.addEventListener("click", (e) => {
   e.preventDefault();
-  document.getElementById("authors").scrollIntoView({ behavior: "smooth" });
-};
-document.getElementById("authorsBtn").onclick = () =>
-  alert(
-    "লেখকদের তালিকা: রাহুল দাস, অনন্যা চক্রবর্তী, মিতা বসু, অর্পিতা সেন, কৌশিক ঘোষ",
-  );
-document.getElementById("narratorsBtn").onclick = () =>
-  alert("কথকদের তালিকা খুলবে — এই ডেমোতে জনপ্রিয় কথকদের তথ্য দেখানো হয়েছে।");
+  showCreatorType("featured");
+});
+
+document.getElementById("authorsBtn")?.addEventListener("click", () => {
+  showCreatorType("authors");
+});
+
+document.getElementById("narratorsBtn")?.addEventListener("click", () => {
+  showCreatorType("narrators");
+});
+
 document.querySelector(".gold-btn").onclick = () =>
   document.querySelector("#popular").scrollIntoView({ behavior: "smooth" });
 
 // Quiz interaction: clear feedback, visual answer states, and one score award per page visit.
-const quizAnswers = { "1": true, "2": false, "3": false, "4": false };
+const quizAnswers = { 1: true, 2: false, 3: false, 4: false };
 const quizButton = document.getElementById("quizBtn");
 const quizResult = document.getElementById("quizResult");
 const quizOptions = [...document.querySelectorAll('#quiz input[name="q"]')];
@@ -373,7 +612,9 @@ quizOptions.forEach((input) => {
   input.addEventListener("change", () => {
     if (quizSubmitted) return;
     quizOptions.forEach((option) => {
-      option.closest(".quiz-option")?.classList.remove("is-correct", "is-wrong");
+      option
+        .closest(".quiz-option")
+        ?.classList.remove("is-correct", "is-wrong");
     });
     quizResult.textContent = "";
     quizResult.className = "quiz-result";
@@ -413,27 +654,41 @@ quizButton.addEventListener("click", () => {
     quizResult.textContent = "দারুণ! সঠিক উত্তর। +১২ পয়েন্ট 🎉";
     quizResult.className = "quiz-result is-success";
   } else {
-    quizResult.textContent = "এই উত্তরটি সঠিক নয়। সঠিক উত্তরটি সবুজ রঙে দেখানো হয়েছে।";
+    quizResult.textContent =
+      "এই উত্তরটি সঠিক নয়। সঠিক উত্তরটি সবুজ রঙে দেখানো হয়েছে।";
     quizResult.className = "quiz-result is-error";
   }
 
   quizButton.disabled = true;
-  quizButton.innerHTML = '<span>উত্তর জমা হয়েছে</span><span aria-hidden="true">✓</span>';
+  quizButton.innerHTML =
+    '<span>উত্তর জমা হয়েছে</span><span aria-hidden="true">✓</span>';
 });
 
 // Newsletter
+
+/* Newsletter — safe initialization */
 const subscribe = document.getElementById("subscribe");
-subscribe.onsubmit = (e) => {
-  e.preventDefault();
-  const input = subscribe.querySelector("input");
-  if (!input.checkValidity()) {
-    input.reportValidity();
-    return;
-  }
-  localStorage.setItem("subscriberEmail", input.value.trim());
-  input.value = "";
-  alert("সাবস্ক্রাইব করার জন্য ধন্যবাদ! আপনার ইমেইল সংরক্ষণ করা হয়েছে।");
-};
+
+if (subscribe) {
+  subscribe.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const input = subscribe.querySelector("input");
+
+    if (!input) return;
+
+    if (!input.checkValidity()) {
+      input.reportValidity();
+      return;
+    }
+
+    localStorage.setItem("subscriberEmail", input.value.trim());
+
+    input.value = "";
+
+    alert("সাবস্ক্রাইব করার জন্য ধন্যবাদ! আপনার ইমেইল সংরক্ষণ করা হয়েছে।");
+  });
+}
 
 // Login/signup local demo account
 const modal = document.getElementById("loginModal"),
