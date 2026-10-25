@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>শব্দায়ন</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="logo" href="#top"
+          ><span class="logo-icon">শ</span><span>শব্দায়ন</span></a
+        >
+        <div class="top-actions">
+          <button class="login-open" id="loginOpen">লগ ইন</button
+          ><button class="hamburger" id="menuOpen">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <aside class="drawer" id="drawer">
+      <button class="drawer-x" id="menuClose">×</button>
+      <div class="drawer-title">শব্দায়ন</div>
+      <nav>
+        <a href="#top">হোম</a><a href="#weekly">সাপ্তাহিক বাছাই</a
+        ><a href="#popular">সবচেয়ে জনপ্রিয়</a><a href="#authors">লেখক ও কথক</a
+        ><a href="#quiz">কুইজ</a><a href="#about">আমাদের সম্পর্কে</a
+        ><a href="#contact">যোগাযোগ</a>
+      </nav>
+      <div class="drawer-search">
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="🔎  গল্প খুঁজুন..."
+          aria-label="গল্প খুঁজুন"
+        />
+      </div>
+    </aside>
+    <div class="overlay" id="overlay"></div>
+
+    <main id="top">
+      <section class="hero">
+        <div class="icon-scroller" aria-label="বিষয় নির্বাচন">
+          <div class="icon-row" data-direction="left" data-delay="0">
+            <div class="icon-track">
+              <div class="icon-card">📜</div>
+              <div class="icon-card">🌊</div>
+              <div class="icon-card">🪄</div>
+              <div class="icon-card">🎭</div>
+              <div class="icon-card">📜</div>
+              <div class="icon-card">🌊</div>
+              <div class="icon-card">🪄</div>
+              <div class="icon-card">🎭</div>
+            </div>
+          </div>
+          <div class="icon-row" data-direction="right" data-delay="350">
+            <div class="icon-track">
+              <div class="icon-card">🌙</div>
+              <div class="icon-card">💌</div>
+              <div class="icon-card">🔎</div>
+              <div class="icon-card">🏺</div>
+              <div class="icon-card">🌙</div>
+              <div class="icon-card">💌</div>
+              <div class="icon-card">🔎</div>
+              <div class="icon-card">🏺</div>
+            </div>
+          </div>
+          <div class="icon-row" data-direction="left" data-delay="700">
+            <div class="icon-track">
+              <div class="icon-card">📖</div>
+              <div class="icon-card">🔥</div>
+              <div class="icon-card">🌿</div>
+              <div class="icon-card">😊</div>
+              <div class="icon-card">📖</div>
+              <div class="icon-card">🔥</div>
+              <div class="icon-card">🌿</div>
+              <div class="icon-card">😊</div>
+            </div>
+          </div>
+          <div class="icon-row" data-direction="right" data-delay="1050">
+            <div class="icon-track">
+              <div class="icon-card">🎵</div>
+              <div class="icon-card">🏛️</div>
+              <div class="icon-card">🌹</div>
+              <div class="icon-card">⭐</div>
+              <div class="icon-card">🎵</div>
+              <div class="icon-card">🏛️</div>
+              <div class="icon-card">🌹</div>
+              <div class="icon-card">⭐</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-copy">
+          <h1>সবার জন্য<br />অডিও গল্প</h1>
+          <p>
+            বাংলা সাহিত্যের সেরা গল্প, কবিতা ও কাহিনি শুনুন। যেকোনো সময়, যেকোনো
+            জায়গায়।
+          </p>
+          <button
+            class="listen"
+            onclick="
+              document
+                .querySelector('#weekly')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            এখনই শুনুন
+          </button>
+        </div>
+      </section>
+      <div class="gold-strip" aria-label="ঘোষণা">
+        <div class="ticker-track">
+          <div class="ticker-item">
+            <span>✦</span> লেখা · শেয়ার করুন · বিখ্যাত হন <span>✦</span>
+            <b>🎙</b> <span>✦</span> আমাদের সেরা গল্পগুলো প্রকাশ করি
+            <span>✦</span>
+          </div>
+          <div class="ticker-item" aria-hidden="true">
+            <span>✦</span> লেখা · শেয়ার করুন · বিখ্যাত হন <span>✦</span>
+            <b>🎙</b> <span>✦</span> আমাদের সেরা গল্পগুলো প্রকাশ করি
+            <span>✦</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="content">
+        <div class="account-strip">
+          <span>আপনি লগ ইন করেননি</span
+          ><button id="accountLogin">লগ ইন করুন</button>
+        </div>
+        <div class="chips" id="chips">
+          <button class="chip active" data-filter="all">সব</button
+          ><button class="chip" data-filter="রহস্য">রহস্য</button
+          ><button class="chip" data-filter="ভৌতিক">ভৌতিক</button
+          ><button class="chip" data-filter="রোমান্স">রোমান্স</button
+          ><button class="chip" data-filter="সাহিত্য">সাহিত্য</button
+          ><button class="chip" data-filter="অন্যান্য">অন্যান্য</button>
+        </div>
+
+        <section class="section" id="weekly">
+          <div class="section-head">
+            <h2>সাপ্তাহিক বাছাই</h2>
+            <a href="#" class="show-all" data-target="weeklyCards"
+              >সব দেখুন ›</a
+            >
+          </div>
+          <div class="card-grid" id="weeklyCards"></div>
+        </section>
+        <section class="promo">
+          <div>
+            <span class="eyebrow">শব্দায়ন ORIGINAL</span>
+            <h2>শব্দায়ন অরিজিনাল</h2>
+            <p>
+              শুধুমাত্র আমাদের প্ল্যাটফর্মে পাওয়া যায় এমন বিশেষ অডিও গল্প ও
+              ধারাবাহিক।
+            </p>
+            <button class="gold-btn">অন্বেষণ করুন</button>
+          </div>
+          <div class="promo-art">🎧</div>
+        </section>
+        <section class="section" id="popular">
+          <div class="section-head">
+            <h2>শুরু করার জন্য</h2>
+            <a href="#" class="show-all" data-target="starterCards"
+              >সব দেখুন ›</a
+            >
+          </div>
+          <div class="card-grid" id="starterCards"></div>
+        </section>
+        <section class="section">
+          <div class="section-head">
+            <h2>সবচেয়ে জনপ্রিয়</h2>
+            <a href="#" class="show-all" data-target="popularCards"
+              >সব দেখুন ›</a
+            >
+          </div>
+          <div class="card-grid" id="popularCards"></div>
+        </section>
+
+        <section class="section" id="authors">
+          <div class="section-head">
+            <h2>জনপ্রিয় লেখক ও কথক</h2>
+            <a href="#" class="show-authors">সব দেখুন ›</a>
+          </div>
+          <p class="muted">
+            সেরা লেখকদের কলমে এবং প্রিয় কণ্ঠে উপভোগ করুন এক অনন্য সাহিত্য
+            অডিওভুবন।
+          </p>
+          <div class="author-row">
+            <article class="author-card">
+              <div class="author-art">👨🏻‍💼</div>
+              <h3>লেখক</h3>
+              <p>জনপ্রিয় বাংলা সাহিত্যিক</p>
+            </article>
+            <article class="author-card green">
+              <div class="author-art">👩🏽‍🎤</div>
+              <h3>কথক</h3>
+              <p>প্রিয় কণ্ঠে গল্প পরিবেশন</p>
+            </article>
+          </div>
+          <button class="outline-wide" id="authorsBtn">সব লেখক দেখুন</button
+          ><button class="outline-wide" id="narratorsBtn">সব কথক দেখুন</button>
+        </section>
+
+        <section class="section stats" id="about">
+          <h2>আমাদের অর্জন</h2>
+          <div class="stat-list">
+            <div class="stat">
+              <span class="stat-icon">▶</span>
+              <div>
+                <b>YouTube Silver Play Button</b
+                ><small
+                  >বাংলা অডিও গল্পের জন্য আমাদের ভালোবাসার স্বীকৃতি।</small
+                >
+              </div>
+            </div>
+            <div class="stat">
+              <span class="stat-icon heart">♥</span>
+              <div>
+                <b>শ্রোতাদের ভালোবাসা</b
+                ><small>প্রতিদিন আরও নতুন গল্প ও কণ্ঠ যোগ হচ্ছে।</small>
+              </div>
+            </div>
+            <div class="stat">
+              <span class="stat-icon">★</span>
+              <div>
+                <b>জনপ্রিয় গল্প</b
+                ><small>হাজারো শ্রোতার পছন্দের গল্প এক জায়গায়।</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="quiz" id="quiz" aria-labelledby="quizTitle">
+          <div class="quiz-topline">
+            <span class="quiz-kicker">শব্দায়ন • জ্ঞান ও সাহিত্য</span>
+            <span class="quiz-badge"
+              ><span class="quiz-live-dot"></span> সাপ্তাহিক চ্যালেঞ্জ</span
+            >
+          </div>
+          <div class="section-head quiz-heading">
+            <div>
+              <h2 id="quizTitle">সাপ্তাহিক কুইজ</h2>
+              <p class="quiz-intro">
+                আপনি কতটা গল্পপ্রেমী? উত্তর দিন, জ্ঞান যাচাই করুন এবং পয়েন্ট
+                সংগ্রহ করুন।
+              </p>
+            </div>
+            <div class="quiz-trophy" aria-hidden="true">🏆</div>
+          </div>
+          <div class="quiz-progress-row">
+            <span
+              >প্রশ্ন <strong>১</strong>
+              <span class="quiz-progress-muted">/ ১</span></span
+            >
+            <span class="quiz-points-label"
+              >সঠিক উত্তরে <strong>+১২ পয়েন্ট</strong></span
+            >
+          </div>
+          <div class="quiz-progress-track" aria-hidden="true">
+            <span></span>
+          </div>
+          <fieldset class="quiz-question-group">
+            <legend class="question">
+              <span class="question-number">প্রশ্ন ০১</span>
+              বাংলা সাহিত্যের কোন উপাদানটি গল্পকে আরও রহস্যময় করে?
+            </legend>
+            <label class="quiz-option">
+              <input type="radio" name="q" value="1" />
+              <span class="option-letter">ক</span>
+              <span class="option-text">একটি পুরোনো চিঠি</span>
+              <span class="option-check" aria-hidden="true">✓</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q" value="2" />
+              <span class="option-letter">খ</span>
+              <span class="option-text">একটি পরিষ্কার আকাশ</span>
+              <span class="option-check" aria-hidden="true">✓</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q" value="3" />
+              <span class="option-letter">গ</span>
+              <span class="option-text">একটি সাধারণ রাস্তা</span>
+              <span class="option-check" aria-hidden="true">✓</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q" value="4" />
+              <span class="option-letter">ঘ</span>
+              <span class="option-text">একটি নতুন খাতা</span>
+              <span class="option-check" aria-hidden="true">✓</span>
+            </label>
+          </fieldset>
+          <button class="quiz-btn" id="quizBtn" type="button">
+            <span>উত্তর জমা দিন</span><span aria-hidden="true">→</span>
+          </button>
+          <div
+            id="quizResult"
+            class="quiz-result"
+            role="status"
+            aria-live="polite"
+          ></div>
+          <div class="quiz-footnote">
+            <span aria-hidden="true">✦</span> মন দিয়ে উত্তর দিন—প্রতি সঠিক
+            উত্তরে পয়েন্ট যোগ হবে।
+          </div>
+        </section>
+        <section class="winners">
+          <h3>🏆 গত সপ্তাহের বিজয়ীরা</h3>
+          <div class="winner">
+            <span>🥇</span><b>অর্ণব সরকার</b><small>৩/৩ সঠিক • ১২ পয়েন্ট</small
+            ><em>বিজয়ী</em>
+          </div>
+          <div class="winner">
+            <span>🥈</span><b>প্রিয়া চট্টোপাধ্যায়</b
+            ><small>৩/৩ সঠিক • ৮ পয়েন্ট</small><em>রানার আপ</em>
+          </div>
+          <div class="winner">
+            <span>🥉</span><b>সুমন দাস</b><small>৩/৩ সঠিক • ৫ পয়েন্ট</small
+            ><em>তৃতীয়</em>
+          </div>
+        </section>
+      </section>
+      <section class="newsletter social-community" id="contact">
+        <div class="newsletter-inner social-community-inner">
+          <div class="community-kicker">
+            <span aria-hidden="true">✦</span> শব্দায়ন কমিউনিটি
+          </div>
+          <h2>গল্পের সঙ্গী হোন</h2>
+          <p class="community-lead">
+            শব্দায়নের সঙ্গে থাকুন, গল্পের জগতে হারিয়ে যান।
+          </p>
+          <p class="community-description">
+            প্রতিদিন নতুন গল্প, আবৃত্তি ও সাহিত্যভিত্তিক কনটেন্ট পেতে আমাদের
+            অনুসরণ করুন।
+          </p>
+          <div class="social-follow">
+            <a
+              class="follow-btn youtube"
+              href="https://www.youtube.com/@ConferenceeGolpokotha"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube-এ শব্দায়ন সাবস্ক্রাইব করুন"
+            >
+              <span class="social-icon" aria-hidden="true"
+                ><i class="fa-brands fa-youtube"></i
+              ></span>
+              <span class="social-copy"
+                ><strong>YouTube</strong
+                ><small>নতুন গল্প ও কথকতা শুনুন</small></span
+              >
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a
+              class="follow-btn facebook"
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook-এ শব্দায়ন পেজ লাইক করুন"
+            >
+              <span class="social-icon social-letter" aria-hidden="true"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></span>
+              <span class="social-copy"
+                ><strong>Facebook</strong
+                ><small>সাহিত্যপ্রেমীদের সঙ্গে যুক্ত হোন</small></span
+              >
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a
+              class="follow-btn instagram"
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram-এ শব্দায়ন ফলো করুন"
+            >
+              <span class="social-icon" aria-hidden="true">
+                <i class="fa-brands fa-instagram"></i
+              ></span>
+              <span class="social-copy"
+                ><strong>Instagram</strong
+                ><small>গল্পের ছোট ছোট মুহূর্ত দেখুন</small></span
+              >
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="community-signoff">
+            <span aria-hidden="true">✦</span> আপনার প্রতিদিনের গল্পের ঠিকানা —
+            শব্দায়ন
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="site-footer">
+      <div class="footer-main">
+        <div class="footer-brand-block">
+          <div class="footer-brand">শব্দায়ন</div>
+          <p>বাংলা গল্পের সেরা ঠিকানা<br />শব্দে বাঁচি, গল্পে বাড়ি</p>
+          <div class="footer-socials">
+            <a
+              class="social-youtube"
+              href="https://www.youtube.com/@ConferenceeGolpokotha"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+              ><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a
+              class="social-facebook"
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Facebook"
+              ><i class="fa-brands fa-facebook-f" aria-hidden="true"></i
+            ></a>
+            <a
+              class="social-instagram"
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+              ><i class="fa-brands fa-instagram" aria-hidden="true"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="footer-columns">
+          <div class="footer-col">
+            <h3>অধ্যয়ন</h3>
+            <a href="#popular">🎧 অডিওবুক</a>
+            <a href="#weekly">📺 ভিডিও গল্প</a>
+            <a href="#weekly">📚 গল্পের সিরিজ</a>
+            <a href="#top">🗂️ ক্যাটাগরি</a>
+            <a href="#authors">🖼️ গ্যালারি</a>
+          </div>
+          <div class="footer-col">
+            <h3>আমাদের সম্পর্কে</h3>
+            <a href="#about">ℹ️ আমাদের সম্পর্কে</a>
+            <a href="#contact">📄 শর্তাবলী</a>
+            <a href="#contact">🔒 গোপনীয়তা নীতি</a>
+            <a href="#contact">©️ কপিরাইট নীতি</a>
+            <button class="footer-login-link" id="footerLogin">
+              👤 লগ ইন / নিবন্ধন
+            </button>
+          </div>
+        </div>
+
+        <div class="footer-contact">
+          <h3>যোগাযোগ</h3>
+          <a href="mailto:shabdayon@gmail.com"
+            >🎤 গল্প পাঠান: <span>shabdayon@gmail.com</span></a
+          >
+          <a href="mailto:shabdayon@gmail.com"
+            >✉️ সাধারণ যোগাযোগ: <span>shabdayon@gmail.com</span></a
+          >
+          <div>📍 পশ্চিমবঙ্গ, ভারত</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-locale">
+          <button type="button">🌐 বাংলা</button><span>•</span
+          ><button type="button">📍 ভারত</button>
+        </div>
+        <p>© ২০২৬ শব্দায়ন। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p>বাংলা সাহিত্যের প্রচার ও প্রসারে নিবেদিত</p>
+      </div>
+    </footer>
+
+    <div class="player-modal" id="playerModal" aria-hidden="true">
+      <div class="player-box">
+        <button class="modal-close" id="playerClose">×</button>
+        <div class="player-art" id="playerArt">🎧</div>
+        <span class="eyebrow">অডিও গল্প</span>
+        <h2 id="playerTitle">গল্প</h2>
+        <p id="playerAuthor"></p>
+        <p id="playerDesc">এই গল্পটি শুনতে প্লে বাটনে চাপুন।</p>
+        <div class="player-progress">
+          <input id="progress" type="range" min="0" max="100" value="0" />
+        </div>
+        <div class="player-controls">
+          <button id="back10">↶ 10s</button
+          ><button class="play-main" id="playPause">▶</button
+          ><button id="forward10">10s ↷</button>
+        </div>
+        <div class="player-actions">
+          <button id="favoriteBtn">♡ পছন্দ</button
+          ><button id="shareBtn">শেয়ার</button>
+        </div>
+        <p class="player-note" id="playerNote"></p>
+      </div>
+    </div>
+    <div class="login-modal" id="loginModal" aria-hidden="true">
+      <div class="login-box">
+        <button class="modal-close" id="loginClose">×</button>
+        <div class="login-brand">
+          <span class="logo-icon">শ</span><strong>শব্দায়ন</strong>
+        </div>
+        <h2 id="authTitle">লগ ইন করুন</h2>
+        <p class="login-sub" id="authSub">আপনার অ্যাকাউন্টে প্রবেশ করুন</p>
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-mode="login">লগ ইন</button
+          ><button class="auth-tab" data-mode="signup">নতুন অ্যাকাউন্ট</button>
+        </div>
+        <form id="authForm">
+          <div class="field signup-only">
+            <label>আপনার নাম</label
+            ><input id="name" type="text" placeholder="পুরো নাম" />
+          </div>
+          <div class="field">
+            <label>ইমেইল / মোবাইল</label
+            ><input
+              id="email"
+              required
+              type="text"
+              placeholder="ইমেইল বা মোবাইল নম্বর"
+            />
+          </div>
+          <div class="field">
+            <label>পাসওয়ার্ড</label>
+            <div class="password">
+              <input
+                id="password"
+                required
+                type="password"
+                placeholder="পাসওয়ার্ড"
+              /><button type="button" id="togglePass">দেখুন</button>
+            </div>
+          </div>
+          <div class="login-row">
+            <label class="remember"
+              ><input id="rememberMe" type="checkbox" /> আমাকে মনে রাখুন</label
+            ><button type="button" class="forgot">
+              পাসওয়ার্ড ভুলে গেছেন?
+            </button>
+          </div>
+          <button class="auth-submit" type="submit" id="authSubmit">
+            লগ ইন
+          </button>
+        </form>
+        <div class="or"><span>অথবা</span></div>
+        <button class="google-btn" type="button">
+          G&nbsp;&nbsp; Google দিয়ে চালিয়ে যান
+        </button>
+        <p class="auth-message" id="authMessage"></p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
